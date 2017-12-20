@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just-Fresh-Agro</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+	<script  type="text/javascript">
+	
+	function myIndex(){
+		function realClock(){
+			var todayDate = new Date();
+			var curHour = todayDate.getHours();
+			var curMinute = todayDate.getMinutes();
+			var curSecond = todayDate.getSeconds();
+			
+			//function to append zero for numbers < 10
+			function checkMinHour(timeVal) {
+				if (timeVal < 10) 
+					{timeVal = "0" + timeVal;}
+				return timeVal;
+			}
+				
+			curMinute = checkMinHour(curMinute);
+			curSecond = checkMinHour(curSecond);
+			
+			document.getElementById("indexClock").innerHTML =   curHour + ":" + curMinute + ":" + curSecond;
+			
+			var rClock = setTimeout(realClock, 500);
+		}
+		
+		function greetings(){
+			var todayDate = new Date();
+			var curHour = todayDate.getHours();
+			
+			if ( curHour < 6 ) {
+				greetStr = "What are you doing so early?"; 
+				aColor = "lightbue";
+			}
+			else if ( curHour >= 6 && curHour <= 12 ) {
+				greetStr = "Good Morning!"; 
+				aColor = "lightpink";
+			}
+			else if ( curHour >= 12 && curHour <= 17 ) {
+				greetStr = "Good Afternoon!"; 
+				aColor = "lightyellow";
+			}
+			else if( curHour > 17 && curHour <= 24 ) {
+				greetStr = "Good Evening!"; 
+				aColor = "lightgrey";
+			}
+				
+			document.getElementById("indexGreet").style.backgroundColor = aColor;
+			document.getElementById("indexGreet").innerHTML =   greetStr;
+		}
+		
+		function indexQuote(){
+			var quote1 = "Agriculture is the most healthful, most useful and most noble employment of Man <br>- George Washingon";
+			var quote2 = "An agricultural life is one eminently calculated for human happiness and human virtue. <br>- Josiah Quincy";
+			var quote3 = "Agriculture for an honorable and highminded man, is the best of all occupations or arts by which men procure the means of living. <br>- Xenophon";
+			var quote4 = "Agriculture is the noblest of all alchemy; for it turns earth, and even manure, into gold, conferring upon its cultivator the additional reward of health. <br>- Paul Chatfield";
+			var quote5 = "A root, a stem, a leaf, some means of capturing sunlight and air and making food – in sum, a plant. The green substance of this earth, the chlorophyll, is all summed up in the plants. Without them we perish, all of us who are flesh and blood.<br>- Hal Borland";
+			
+			var quotes = new Array();
+			var quoteCount = quotes.push(quote1);
+			var quoteCount = quotes.push(quote2);
+			var quoteCount = quotes.push(quote3);
+			var quoteCount = quotes.push(quote4);
+			var quoteCount = quotes.push(quote5);
+			
+			var randomNumber = Math.floor(Math.random()*5);
+			
+			var quoteHeight = "300px";
+			
+			if (randomNumber < 2)quoteHeight = "150px";
+			else if (randomNumber >= 2 && randomNumber<4)quoteHeight = "250px";
+			else quoteHeight = "auto";
+				
+			document.getElementById("indexquote").style.height = quoteHeight;
+			document.getElementById("indexquote").innerHTML =  quotes[randomNumber];
+		}	
+		
+		function indexCalendar(){
+			monthList = new Array("January", "February", "March", "April","May", "June", "July", "August", "September","October", "November", "December");
+
+			var linkcount=0;
+			function addlink(month, day, href) {
+			var entry = new Array(3);
+			entry[0] = month;
+			entry[1] = day;
+			entry[2] = href;
+			this[linkcount++] = entry;
+			}
+
+			Array.prototype.addlink = addlink;
+
+			linkdays = new Array();
+			monthDays = new Array(12);
+			monthDays[0]=31;
+			monthDays[1]=28;
+			monthDays[2]=31;
+			monthDays[3]=30;
+			monthDays[4]=31;
+			monthDays[5]=30;
+			monthDays[6]=31;
+			monthDays[7]=31;
+			monthDays[8]=30;
+			monthDays[9]=31;
+			monthDays[10]=30;
+			monthDays[11]=31;
+
+			todayDate=new Date();
+			thisday=todayDate.getDay();
+			thismonth=todayDate.getMonth();
+			thisdate=todayDate.getDate();
+
+			thisyear = todayDate.getYear();
+			thisyear = thisyear % 100;
+
+			thisyear = ((thisyear < 50) ? (2000 + thisyear) : (1900 + thisyear));
+
+			if (((thisyear % 4 == 0)
+			&& !(thisyear % 100 == 0))
+			||(thisyear % 400 == 0)) monthDays[1]++;
+
+			startspaces = thisdate;
+			while (startspaces > 7) startspaces -=7;
+			startspaces = thisday - startspaces + 1;
+
+			if (startspaces < 0) startspaces +=7;
+
+			var calStr = "<table style='margin:auto;text-align:center'><tr><td colspan=7 style='font-family:Comic Sans MS'>"
+			+ monthList[thismonth] + " " + thisyear
+			+ "</td></tr>"
+			+ "<tr>"
+			+ "<td align=center>Su</td>"
+			+ "<td align=center>M</td>"
+			+ "<td align=center>Tu</td>"
+			+ "<td align=center>W</td>"
+			+ "<td align=center>Th</td>"
+			+ "<td align=center>F</td>"
+			+ "<td align=center>Sa</td>"
+			+ "</tr>"
+			+ "<tr>"
+
+			for (i=0;i<startspaces;i++) {
+			calStr = calStr + "<td> </td>";
+			}
+
+			count=1;
+			while (count <= monthDays[thismonth]) {
+			for (b = startspaces;b<7;b++) {
+			linktrue=false;
+			calStr = calStr + "<td>";
+
+			for (c=0;c<linkdays.length;c++) {
+			if (linkdays[c] != null) {
+			if ((linkdays[c][0]==thismonth + 1) && (linkdays[c][1]==count)) {
+			document.write(linkdays[c][2]);
+			linktrue=true;
+				  }
+			   }
+			}
+
+			if (count==thisdate) {
+			calStr = calStr + "<span style='color:red;background-color:yellow;'>";
+			}
+
+			if (count <= monthDays[thismonth]) {
+			calStr = calStr + count;
+			}
+			else {
+			calStr = calStr + " ";
+			}
+
+			if (count==thisdate) {
+			calStr = calStr + "</span>";
+			}
+
+			if (linktrue)
+			calStr = calStr + "</td>";
+			count++;
+			}
+			calStr = calStr + "</tr>";
+			calStr = calStr + "<tr>";
+			startspaces=0;
+			}
+			calStr = calStr + "</table>";
+			
+			document.getElementById("indexCal").innerHTML =  calStr;
+		}
+		
+		realClock();
+		greetings();
+		indexQuote();
+		indexCalendar();
+	}
+	</script>
+</head>
+<body onload="myIndex()">
+	<article id ="indexPage">
+		<header>
+			<section class = "BackImg1">
+			</section>
+			<!-- Heading for Menu -->
+			<!-- Heading for Just-Fresh-Agro -->
+			<h1 class = "Farmcls"> Just-Fresh-Agro </h1> 
+			<!-- Horizontal line under Just-Fresh-Agro -->
+			<hr width=25% size=10 noshade color=#800000>
+			<img id = "logoimage" src="images/logo.jpg" alt="logo">
+			<nav>
+				<h3 class="large-menu">
+					<a href="index.html" title="Home" id = OverlineId>Home</a> &nbsp;
+					<a href="about.html" title="About Us" id = OverlineId>About Us</a> &nbsp;
+					<a href="new.html" title="What's New" id = OverlineId>What's New</a> &nbsp;
+					<a href="customerService.html" title="Support" id = OverlineId>Customer Service</a> &nbsp;
+					<a href="faq.html" title="FAQ" id = OverlineId>FAQ</a> &nbsp;
+					<a href="productInformation.html" title="Product Information" id = OverlineId>Product Information</a> &nbsp;
+					<a href="catalog.html" title="Products" id = OverlineId>Catalog of Products</a> &nbsp;
+					<a href="employment.html" title="Employment" id = OverlineId>Employment</a> &nbsp;
+					<a href="order.html" title="Order" id = OverlineId>Order</a> &nbsp;
+				</h3>
+			</nav>
+		</header>
+		<!-- Text for Home Page -->
+		<section id ="indextext">
+			<div class="index-container">
+				<div id = "indexInfo"> 
+					<div id = "indexClock"> </div>
+					<div id = "indexGreet"> </div>
+					<div id = "indexCal"> </div>
+				</div>
+				<div class ="index-text">
+				Welcome to Just-Fresh-Agro! We provide <span id = indxspan> nothing less than fresh!! </span> <br><br>
+				We save your grocery time by delivering Organic Produce fresh from our farms to your doorstep. 
+				So no more driving and parking for your vegetables!
+				No need to remember to pick up your vegetables and fruits from remote location.
+				<br><br>
+				<span id = indxspan>What's New</span>: Now enjoy the flexibility to customize your own box! 
+				Choose the items and create the Best Box for you!
+				<br><br>
+				We deliver organic produce that is sustainably grown and free of pesticides. We ensure that we maintain healthy communities. 
+				<br><br>
+				You can count on us for great tasting vegetables and fruits!!!
+				</div>
+				<div id = "indexquote"> 
+				</div>	
+			</div>
+		</section>
+		<!-- Menu options at Bottom of Page -->
+		<nav>
+			<h4 id = Align>
+				<a href="index.html" title="Home">Home</a> &nbsp;
+				<a href="about.html" title="About Us">About Us</a> &nbsp;
+				<a href="new.html" title="What's New">What's New</a> &nbsp;
+				<a href="customerService.html" title="Support">Customer Service</a> &nbsp;
+				<a href="faq.html" title="FAQ">FAQ</a> &nbsp;
+				<a href="productInformation.html" title="Product Information">Product Information</a> &nbsp;
+				<a href="catalog.html" title="Products">Catalog of Products</a> &nbsp;
+				<a href="employment.html" title="Employment">Employment</a> &nbsp;
+				<a href="order.html" title="Order">Order</a> &nbsp;
+			</h4>
+		</nav>
+		<hr>
+		<footer>
+			&copy; 02/25/2017 Amruta Kulkarni
+		</footer>
+	</article>
+</body>
+</html> 

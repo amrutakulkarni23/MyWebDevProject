@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Just-Fresh-Agro</title>
+	<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+	<script type="text/javascript">
+		// validates form
+		function validateForm() {
+			var checkGrandTotal = 0;
+			var vFirst = document.orderForm.first.value;
+			var vLast = document.orderForm.last.value;
+			var vAddress = document.orderForm.address.value;
+			var vCity = document.orderForm.city.value;
+			var vState = document.orderForm.state.value;
+			var vZip = document.orderForm.zip.value;
+			var vPhone = document.orderForm.phone.value;
+			var vEmail = document.orderForm.email.value;
+			var vCcnum = document.orderForm.ccnum.value;
+			var vCctype = document.orderForm.cctype.value;
+			var vCcExpire = document.orderForm.ccexpire.value;
+			var vComment = document.orderForm.comment.value;
+			checkGrandTotal = document.getElementById("grandTotal").value;
+			var clearForm = document.getElementById("orderForm");
+			
+			var checkValues = [vFirst,vLast,vAddress,vCity,vState,vZip,vPhone,vEmail,vCcnum,vCctype,vCcExpire,vComment];
+			var checkNames = ["first","last","address","city","state","zip","phone","email","ccnum","cctype","ccexpire","comment"];
+			var fieldNames = ["First Name","Last Name","Address","City","State","Zip Code","Phone Number","Email","Card Number","Card Type","Expiry Date","Comment"];
+			
+			for (i=0;i<checkValues.length;i++){	
+				if(checkValues[i].length == 0){
+					alert(fieldNames[i] + " cannot be blank. Please Enter " + fieldNames[i] + ".");
+					document.getElementById(checkNames[i]).focus();
+					document.getElementById(checkNames[i]).select();
+					return false;
+				}
+				if (checkValues[i].replace(/\s/g, '').length == "0") {
+					alert(fieldNames[i] + " cannot contain only spaces. Please enter correct " + fieldNames[i] + ".");
+					document.getElementById(checkNames[i]).focus();
+					document.getElementById(checkNames[i]).select();
+					return false;
+				}
+				if(fieldNames[i] == "Zip Code"){
+					var zipCodeLength = checkValues[i].length;
+					if(zipCodeLength < 5 || (zipCodeLength < 9 && zipCodeLength > 5)){
+						alert(fieldNames[i] + " should be 5 or 9 digits. Please enter correct " + fieldNames[i] + ".");
+						document.getElementById(checkNames[i]).focus();
+						document.getElementById(checkNames[i]).select();
+						return false;
+					}
+				}
+				if(fieldNames[i] == "Phone Number"){
+					var pattern = /\(\d{3}\) \d{3}-\d{4}/;
+					var matches = pattern.test(checkValues[i]);
+					if(!matches){
+						alert(" Please enter " + fieldNames[i] + " in correct format((xxx) xxx-xxx).");
+						document.getElementById(checkNames[i]).focus();
+						document.getElementById(checkNames[i]).select();
+						return false;
+					}
+				}
+				if(fieldNames[i] == "Expiry Date"){
+					var pattern = /^\d{1,2}\/\d{4}$/;
+					var matches = pattern.test(checkValues[i]);
+					if(!matches){
+						alert(" Please enter " + fieldNames[i] + " in correct format(mm/yyyy).");
+						document.getElementById(checkNames[i]).focus();
+						document.getElementById(checkNames[i]).select();
+						return false;
+					}
+					var expiryMonth = checkValues[i].substr(0,checkValues[i].indexOf('/'));
+					var expiryYear = checkValues[i].substr(checkValues[i].indexOf('/')+1);
+					var today, cardExpiryDay;
+					today = new Date();
+					cardExpiryDay = new Date();
+					cardExpiryDay.setFullYear(expiryYear, expiryMonth, 1);
+
+					if (cardExpiryDay < today) {
+					   alert("Credit card has been expired. Please enter correct expiry date or use another valid card.");
+					   document.getElementById(checkNames[i]).focus();
+					   document.getElementById(checkNames[i]).select();
+					   return false;
+					}
+				}
+			}
+			if(!checkGrandTotal || checkGrandTotal==0){
+				alert("Order cannot be empty. Please enter order details.");
+				document.getElementById("banana").focus();
+				document.getElementById("banana").select();
+				return false;
+			}
+			//if form is validated successfully clear the form upon submission
+			clearForm.reset();
+		}
+		
+		// calculate order price
+		function calculatePrice(){
+			function subTotalFruits(){
+				var bananaQuantity = document.orderForm.banana.value;
+				var watermelonQuantity = document.orderForm.Melon.value;
+				var appleQuantity = document.orderForm.Apple.value;
+				var orangeQuantity = document.orderForm.Orange.value;
+				
+				var totalBananaPrice = bananaQuantity * 2.99;
+				var totalMelonPrice = watermelonQuantity * 2.49;
+				var totalApplePrice = appleQuantity * 1;
+				var totalOrangePrice = orangeQuantity * 1;
+				
+				var totalFruitsPrice = totalBananaPrice + totalMelonPrice + totalApplePrice + totalApplePrice;
+				
+				document.getElementById("bananaPrice").value = totalBananaPrice;
+				document.getElementById("MelonPrice").value = totalMelonPrice;
+				document.getElementById("ApplePrice").value = totalApplePrice;
+				document.getElementById("OrangePrice").value = totalOrangePrice;
+				document.getElementById("fruitsPrice").value = totalFruitsPrice;
+				
+				return totalFruitsPrice;
+			}
+			
+			function subTotalLeafVegs(){
+				var spinachQuantity = document.orderForm.Spinach.value;
+				var lettuceQuantity = document.orderForm.Lettuce.value;
+				var watercressQuantity = document.orderForm.Watercress.value;
+				
+				var totalSpinachPrice = spinachQuantity * 1.99;
+				var totalLettucePrice = lettuceQuantity * 1.49;
+				var totalWatercressPrice = watercressQuantity * 1;
+				
+				var totalLeafVegPrice = totalSpinachPrice + totalLettucePrice + totalWatercressPrice;
+								
+				document.getElementById("SpinachPrice").value = totalSpinachPrice;
+				document.getElementById("LettucePrice").value = totalLettucePrice;
+				document.getElementById("WatercressPrice").value = totalWatercressPrice;
+				document.getElementById("LeafVegPrice").value = totalLeafVegPrice;
+				
+				return totalLeafVegPrice;
+			}
+			
+			function subTotalVegs(){
+				var potatoQuantity = document.orderForm.Potato.value;
+				var cabbageQuantity = document.orderForm.Cabbage.value;
+				var cauliflowerQuantity = document.orderForm.Cauliflower.value;
+				
+				var totalPotatoPrice = potatoQuantity * 1.99;
+				var totalCabbagePrice = cabbageQuantity * 1;
+				var totalCauliflowerPrice = cauliflowerQuantity * 1.99;
+				
+				var totalVegPrice = totalPotatoPrice + totalCabbagePrice + totalCauliflowerPrice;
+				
+				document.getElementById("PotatoPrice").value = totalPotatoPrice;
+				document.getElementById("CabbagePrice").value = totalCabbagePrice;
+				document.getElementById("CauliflowerPrice").value = totalCauliflowerPrice;
+				document.getElementById("vegPrice").value = totalVegPrice;
+				
+				return totalVegPrice;
+			}
+			
+			function subTotalMilkProducts(){
+				var lassiQuantity = document.orderForm.lassi.value;
+				var milkQuantity = document.orderForm.milk.value;
+				var yogurtQuantity = document.orderForm.Yogurt.value;
+				var buttermilkQuantity = document.orderForm.Buttermilk.value;
+				
+				var totalLassiPrice = lassiQuantity * 2.99;
+				var totalLMilkPrice = milkQuantity * 5.99;
+				var totalYogurtPrice = yogurtQuantity * 2.99;
+				var totalButterMilkPrice = buttermilkQuantity * 2.49;
+				
+				var totalMilkProductsPrice = totalLassiPrice + totalLMilkPrice + totalYogurtPrice + totalButterMilkPrice;
+						
+				document.getElementById("lassiPrice").value = totalLassiPrice;
+				document.getElementById("milkPrice").value = totalLMilkPrice;
+				document.getElementById("YogurtPrice").value = totalYogurtPrice;
+				document.getElementById("ButtermilkPrice").value = totalButterMilkPrice;
+				document.getElementById("milkProductsPrice").value = totalMilkProductsPrice;
+				
+				return totalMilkProductsPrice;
+			}
+			
+			function allProductsPrice(){
+				var fruitsTotalPrice = subTotalFruits();
+				var leafVegTotalPrice = subTotalLeafVegs();
+				var vegTotalPrice = subTotalVegs();
+				var milkProductsTotalPrice = subTotalMilkProducts();
+				
+				var totalPrice = fruitsTotalPrice + leafVegTotalPrice + vegTotalPrice + milkProductsTotalPrice;
+				document.getElementById("allProductTotal").value = totalPrice;
+				return totalPrice;
+			}
+			
+			function computeTax(){
+				var grandTotalPrice = allProductsPrice();
+				var taxPrice = grandTotalPrice * 8.25/100;
+				return taxPrice;
+			}
+			
+			function grandTotal(){
+				var initialQunatity = 0;
+				var grandTotal = 0;
+				var allProductsTotalPrice = 0;
+				allProductsTotalPrice = allProductsPrice();
+				var salestax = computeTax();
+				
+				if(allProductsTotalPrice > 0)
+				{
+					document.getElementById("shipingHandling").value = "5.99";
+					document.getElementById("salesTax").value = salestax;
+					initialQunatity = 1;
+				}
+				else
+				{
+					document.getElementById("shipingHandling").value = "0";	
+					document.getElementById("salesTax").value = "0";
+				}
+				
+				var orderTotal = allProductsTotalPrice + salestax
+				
+				document.getElementById("orderTotal").value = orderTotal;
+				
+				if(initialQunatity > 0){
+					var grandTotal = orderTotal + 5.99;
+				}					
+				
+				document.getElementById("grandTotal").value = grandTotal;
+			}
+			
+			grandTotal();
+		}
+	</script>
+</head>
+<body id="orderbg">
+	<article>
+		<header>
+			<!-- Heading for Just-Fresh-Agro -->
+			<h1 class = "Farmcls" id="whatsNew"> Just-Fresh-Agro </h1>
+			<!-- Horizontal line under Just-Fresh-Agro -->			
+			<hr width=20% size=10 noshade color=#800000>
+			<nav>
+				<h3 class="large-menu">
+					<a href="index.html" title="Home" id = OverlineId>Home</a> &nbsp;
+					<a href="about.html" title="About Us" id = OverlineId>About Us</a> &nbsp;
+					<a href="new.html" title="What's New" id = OverlineId>What's New</a> &nbsp;
+					<a href="customerService.html" title="Support" id = OverlineId>Customer Service</a> &nbsp;
+					<a href="faq.html" title="FAQ" id = OverlineId>FAQ</a> &nbsp;
+					<a href="productInformation.html" title="Product Information" id = OverlineId>Product Information</a> &nbsp;
+					<a href="catalog.html" title="Products" id = OverlineId>Catalog of Products</a> &nbsp;
+					<a href="employment.html" title="Employment" id = OverlineId>Employment</a> &nbsp;
+					<a href="order.html" title="Order" id = OverlineId>Order</a> &nbsp;
+				</h3>
+			</nav>
+		</header>
+		<!-- Text for Home Page -->
+		<section class="orderForm">
+			<form name="orderForm" action="http://voyager.deanza.edu/~hso/cgi-bin/form420.cgi" method="post" onsubmit="return validateForm();">
+			<!-- <form name="orderForm" action="https://www.google.com" method="post" onsubmit="return validateForm();"> -->
+				<section>
+					<input type="hidden" name="myemail" value="kulkarniamrut635@students.itu.edu">
+					<label for="first"> First Name: </label>
+						<input type="text" name="first" id="first" maxlength="50" size="25" >
+					<br><br>
+					<label for="fname2"> Last Name: </label>
+						<input type="text" name="last" id="last" maxlength="50" size="25" >
+					<br><br>
+					<label for="fname3"> Street Address: </label>
+						<input type="text" name="address" id="address" maxlength="80" size="25">
+					<br><br>
+					<label for="fname4"> City: </label>
+						<input type="text" name="city" id="city" maxlength="20" size="25" >
+					<br><br>
+					<label for="fname5"> State: </label>
+						<input type="text" name="state" id="state" maxlength="20" size="25" >
+					<br><br>
+					<label for="fname6"> Zip: </label>
+						<input type="text" name="zip" id="zip" maxlength="9" size="15" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >	
+					<br><br>
+					<label for="fname7"> Telephone number(xxx) xxx-xxxx: </label>
+						<input type="tel" name="phone" id="phone" maxlength="14" size="15" >
+					<br><br>
+					<label for="fname8"> Email: </label>
+							<input type="email" name="email" id="email" maxlength="50" size="30" >
+					<br><br>
+					<label for="fname9"> Credit card number: </label>
+						<input type="text" name="ccnum" id="ccnum" maxlength="16" size="15" onkeypress='return event.charCode >= 48 && event.charCode <= 57' >	
+					<br><br>
+					<label for="cardlist" class="commentLabel"> Credit Card Type: </label>
+					<select name="cctype" size="4" multiple="multiple" class="selectClass">
+						<option class="selectClass" value="Master" selected>Master Card</option>
+						 <option class="selectClass" value="Debit">Debit Card</option>
+						 <option class="selectClass" value="Visa">Visa</option>
+						 <option class="selectClass" value="credit">Credit Card</option>
+					</select>
+					<br><br>
+					<label for="fname10"> Credit card expiration date(mm/yyyy): </label>
+							<!-- <input type="date" name="ccexpire" id="fname10" > -->
+							<input type="text" name="ccexpire" id="ccexpire" maxlength="7" size="15" >
+					<br><br>						
+					<label for="comments" class="commentLabel"> Comments : </label>
+							<textarea name="comment" rows="5" cols="30" >Please enter your comments here</textarea>
+				</section>
+				<br><br>
+				<section>
+					<table border='3' rules="all" class="tableOrder">
+						<tr id="tablebg">
+							<th class="orderTableHeading">Category</th>
+							<th class="orderTableHeading">Description</th>
+							<th class="orderTableHeading">Unit Price</th>
+							<th class="orderTableHeading">Quantity</th>
+							<th class="orderTableHeading">Total Price</th>
+						</tr>
+						<tr id="tablebg">
+							<td rowspan="4"> 1 - Fruits</td>
+							<td> Banana </td>
+							<td> $2.99</td>
+							<td> <input type="text" name="banana" id="banana" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="bananaPrice" id="bananaPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Watermelon</td>
+							<td> $2.49 </td>
+							<td> <input type="text" name="Melon" id="Melon" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="MelonPrice" id="MelonPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Apple</td>
+							<td> $1 </td>
+							<td> <input type="text" name="Apple" id="Apple" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="ApplePrice" id="ApplePrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Orange</td>
+							<td> $1 </td>
+							<td> <input type="text" name="Orange" id="Orange" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="OrangePrice" id="OrangePrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td colspan="4" class = "orderTable"> Subtotal $ </td>
+							<td> <input type="text" name="fruitsPrice" id="fruitsPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td rowspan="3"> 2 - Leaf Vegetables</td>
+							<td> Spinach </td>
+							<td>  $1.99 </td>
+							<td> <input type="text" name="Spinach" id="Spinach" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="SpinachPrice" id="SpinachPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Lettuce</td>
+							<td> $1.49 </td>
+							<td> <input type="text" name="Lettuce" id="Lettuce" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="LettucePrice" id="LettucePrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Watercress</td>
+							<td> $1 </td>
+							<td> <input type="text" name="Watercress" id="Watercress" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="WatercressPrice" id="WatercressPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td colspan="4" class = "orderTable"> Subtotal $ </td>
+							<td> <input type="text" name="LeafVegPrice" id="LeafVegPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td rowspan="3"> 3 - Vegetables </td>
+							<td> Potato </td>
+							<td> $1.99 </td>
+							<td> <input type="text" name="Potato" id="Potato" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="PotatoPrice" id="PotatoPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Cabbage </td>
+							<td> $1 </td>
+							<td> <input type="text" name="Cabbage" id="Cabbage" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"></td>
+							<td> <input type="text" name="CabbagePrice" id="CabbagePrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Cauliflower </td>
+							<td> $1.99 </td>
+							<td> <input type="text" name="Cauliflower" id="Cauliflower" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="CauliflowerPrice" id="CauliflowerPrice" readonly="readonly"> </td>
+						</tr>
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Subotal $</td>
+							<td> <input type="text" name="vegPrice" id="vegPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td rowspan="4"> 4 - Milk Products </td>
+							<td> Sweet Lassi </td>
+							<td> $2.99 </td>
+							<td> <input type="text" name="lassi" id="lassi" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="lassiPrice" id="lassiPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Milk </td>
+							<td> $5.99 </td>
+							<td> <input type="text" name="milk" id="milk" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="milkPrice" id="milkPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Yogurt </td>
+							<td> $2.99 </td>
+							<td> <input type="text" name="Yogurt" id="Yogurt" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="YogurtPrice" id="YogurtPrice" readonly="readonly"> </td>
+						</tr>
+						<tr id="tablebg">
+							<td> Buttermilk </td>
+							<td> $2.49 </td>
+							<td> <input type="text" name="Buttermilk" id="Buttermilk" size="6" class="cellwidth" onkeypress='return event.charCode >= 48 && event.charCode <= 57' onkeyup="calculatePrice()"> </td>
+							<td> <input type="text" name="ButtermilkPrice" id="ButtermilkPrice" readonly="readonly"> </td>
+						</tr>
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Subotal $</td>
+							<td> <input type="text" name="milkProductsPrice" id="milkProductsPrice" readonly="readonly"> </td>
+						</tr>
+						
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Total $  </td>
+							<td> <input type="text" name="allProductTotal" id="allProductTotal" readonly="readonly">  </td>
+						</tr>
+						
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Sales Tax (8.25%) $  </td>
+							<td> <input type="text" name="salesTax" id="salesTax" readonly="readonly">  </td>
+						</tr>			
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Total $  </td>
+							<td> <input type="text" name="orderTotal" id="orderTotal" readonly="readonly">  </td>
+						</tr>
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Shipping and Handling $  </td>
+							<td> <input type="text" name="shipingHandling" id="shipingHandling" value="0" readonly="readonly">  </td>
+						</tr>
+						<tr class = "orderTable" id="tablebg">
+							<td colspan="4"> Grand Total $  </td>
+							<td> <input type="text" name="grandTotal" id="grandTotal" readonly="readonly">  </td>
+						</tr>
+						
+					</table>
+					
+					<div>
+						<input type="submit" class="orderButton" name="SubmitButton" value="Submit">  
+						<!-- <button class="orderButton" onclick="validateForm()">Submit</button> -->
+						<input type="reset" class="orderButton" name="ResetButton" value="Reset">
+					</div>
+				</section>
+			</form>
+		</section>
+		<!-- Menu options at Bottom of Page -->
+		<nav>
+			<h4 id = Align>
+				<a href="index.html" title="Home">Home</a> &nbsp;
+				<a href="about.html" title="About Us">About Us</a> &nbsp;
+				<a href="new.html" title="What's New">What's New</a> &nbsp;
+				<a href="customerService.html" title="Support">Customer Service</a> &nbsp;
+				<a href="faq.html" title="FAQ">FAQ</a> &nbsp;
+				<a href="productInformation.html" title="Product Information">Product Information</a> &nbsp;
+				<a href="catalog.html" title="Products">Catalog of Products</a> &nbsp;
+				<a href="employment.html" title="Employment">Employment</a> &nbsp;
+				<a href="order.html" title="Order">Order</a> &nbsp;
+			</h4>
+		</nav>
+		<hr>
+		<footer>
+			&copy; 02/25/2017 Amruta Kulkarni
+		</footer>
+	</article>
+</body>
+</html> 

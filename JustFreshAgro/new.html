@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just-Fresh-Agro</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+<script type="text/javascript">
+			// function to change new product box position
+			function changePosition(){
+				var getBodyElement = document.getElementById("newId");
+				
+				getBodyElement.onclick = function (){
+					var clientXVal = event.clientX;
+					var clientYVal = event.clientY;
+					var pageXVal = event.pageX;
+					var pageYVal = event.pageY;		
+
+				if (pageXVal === undefined){
+					pageXVal = clientXVal;
+				}	
+
+				if (pageYVal === undefined){
+					pageXVal = clientYVal;
+				}				
+									
+				var checkDiv = document.getElementById("newProdId");
+				
+				checkDiv.style.left = pageXVal+'px';
+				checkDiv.style.top = pageYVal+'px';
+				}
+			}
+</script>
+</head>
+<body onload="changePosition()" id = "newId">
+	<article>
+		<header>
+			<!-- Heading for Just-Fresh-Agro -->
+			<h1 class = "Farmcls" id="whatsNew"> Just-Fresh-Agro </h1>
+			<!-- Horizontal line under Just-Fresh-Agro -->			
+			<hr width=20% size=10 noshade color=#800000>
+			<nav>
+				<h3 class="large-menu">
+					<a href="index.html" title="Home" id = OverlineId>Home</a> &nbsp;
+					<a href="about.html" title="About Us" id = OverlineId>About Us</a> &nbsp;
+					<a href="new.html" title="What's New" id = OverlineId>What's New</a> &nbsp;
+					<a href="customerService.html" title="Support" id = OverlineId>Customer Service</a> &nbsp;
+					<a href="faq.html" title="FAQ" id = OverlineId>FAQ</a> &nbsp;
+					<a href="productInformation.html" title="Product Information" id = OverlineId>Product Information</a> &nbsp;
+					<a href="catalog.html" title="Products" id = OverlineId>Catalog of Products</a> &nbsp;
+					<a href="employment.html" title="Employment" id = OverlineId>Employment</a> &nbsp;
+					<a href="order.html" title="Order" id = OverlineId>Order</a> &nbsp;
+				</h3>
+			</nav>
+		</header>
+		<!-- Text for Home Page -->
+		<div id = "newProdId"> 
+			<p> This is what's new today!<br> <span class="todayOfferClass">Customize your own box with variety of foods!!! </span></p>
+			<img src="images/newProd.jpg" alt="newimage">
+		</div>
+		<div class="newflex-container">
+			<div class ="newflex-wrapper">
+				<div class = "newflex-item3"> 
+					<img src="images/newimage1.jpg" alt="newimage">
+				</div>
+				<div class = "newflex-item1">
+					<ul>
+						<li> <span class = "newspan1" > customize your own box </span>  </li>
+						<li> <span class = "newspan2" > variety of foods and fruits </span>  </li>
+						<li> <span class = "newspan3" > fisheries for sustainable fishing </span>  </li>
+						<li> <span class = "newspan4" > online payment methods </span>  </li>
+					</ul>
+				</div>
+			</div>
+			<div class = "newflex-item2"> 
+				You can now enjoy <span class = "newspan1" >the flexibility to customize your own box! </span> 
+				You can choose the items and create the Best Box for you! 
+				<br>
+				You can also remove the items that you don't want!
+				<br><br>
+				We are partenering with other farm owners to give a variety of foods and fruits to you.
+				There are also ongoing discussions with <span class = "newspan2" >fisheries for sustainable fishing </span>. 
+				<br><br>
+				Upcoming release of our website will add following <span class = "newspan3" > online payment methods  </span>- <br>
+							Visa <br>
+							MasterCard <br>
+							PayPal <br>
+							eCheck <br><br>
+				You will be able to see <span class = "newspan4" > farms participating our programs live </span> 
+				on this site after upcoming release.
+			</div>
+		</div>
+		
+		<!-- Menu options at Bottom of Page -->
+		<nav>
+			<h4 id = Align>
+				<a href="index.html" title="Home">Home</a> &nbsp;
+				<a href="about.html" title="About Us">About Us</a> &nbsp;
+				<a href="new.html" title="What's New">What's New</a> &nbsp;
+				<a href="customerService.html" title="Support">Customer Service</a> &nbsp;
+				<a href="faq.html" title="FAQ">FAQ</a> &nbsp;
+				<a href="productInformation.html" title="Product Information">Product Information</a> &nbsp;
+				<a href="catalog.html" title="Products">Catalog of Products</a> &nbsp;
+				<a href="employment.html" title="Employment">Employment</a> &nbsp;
+				<a href="order.html" title="Order">Order</a> &nbsp;
+			</h4>
+		</nav>
+		<hr>
+		<footer>
+			&copy; 02/25/2017 Amruta Kulkarni
+		</footer>
+	</article>
+</body>
+</html> 

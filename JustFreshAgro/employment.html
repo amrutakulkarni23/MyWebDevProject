@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Just-Fresh-Agro Jobs</title>
+	<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+	<script type="text/javascript">
+			
+		var job1 = "position1.html";
+		var job2 = "position2.html";
+		var x = 100;
+		var y = 100;
+		
+		function openPositionWindow(url)
+		{
+			var jobPosition = window.open(url,'position1','width=500,height=300,resizable,left=600,top=0');
+			
+			jobPosition.focus();  
+			jobPosition.scrollTo(x,y);
+			
+		}
+										
+	</script>
+</head>
+<body class="employmentbg">
+	<article>
+		<header>
+			<!-- Heading for Just-Fresh-Agro -->
+			<h1 class = "Farmcls" id="employment"> Just-Fresh-Agro </h1> 
+			<!-- Horizontal line under Just-Fresh-Agro -->
+			<hr width=18% size=10 noshade color=#800000>
+			<!-- Heading for Menu -->
+			<nav>
+				<h3 class="large-menu">
+					<a href="index.html" title="Home" id = OverlineId>Home</a> &nbsp;
+					<a href="about.html" title="About Us" id = OverlineId>About Us</a> &nbsp;
+					<a href="new.html" title="What's New" id = OverlineId>What's New</a> &nbsp;
+					<a href="customerService.html" title="Support" id = OverlineId>Customer Service</a> &nbsp;
+					<a href="faq.html" title="FAQ" id = OverlineId>FAQ</a> &nbsp;
+					<a href="productInformation.html" title="Product Information" id = OverlineId>Product Information</a> &nbsp;
+					<a href="catalog.html" title="Products" id = OverlineId>Catalog of Products</a> &nbsp;
+					<a href="employment.html" title="Employment" id = OverlineId>Employment</a> &nbsp;
+					<a href="order.html" title="Order" id = OverlineId>Order</a> &nbsp;
+				</h3>
+			</nav>
+		</header>
+		<section>
+			<div class ="job-container">
+				<div class = "job-image1">
+					<img src="images/job1.jpg" alt="newimage">
+					<figcaption> Please contact us for more details</figcaption>
+				</div>
+				<div class ="jobs">
+				<!-- Text for jobs Page -->
+					<div class = "job1">
+						<h2>Delivery Driver </h2>
+							<h5> <a href='javascript:openPositionWindow(job1)'> <span class = "myJobs" > Driver for delivering Products </span> </a></h5>
+						<h2>Staff Personal</h2>
+							<h5> <a href='javascript:openPositionWindow(job2)'> <span class = "myJobs" > Front Desk Coordinator </span> </a> </h5>
+					</div>
+				</div>
+			</div>
+		</section>
+<!-- Menu options at Bottom of Page -->
+		<nav>
+			<h4 id = Align>
+			<a href="index.html" title="Home">Home</a> &nbsp;
+				<a href="about.html" title="About Us">About Us</a> &nbsp;
+				<a href="new.html" title="What's New">What's New</a> &nbsp;
+				<a href="customerService.html" title="Support">Customer Service</a> &nbsp;
+				<a href="faq.html" title="FAQ">FAQ</a> &nbsp;
+				<a href="productInformation.html" title="Product Information">Product Information</a> &nbsp;
+				<a href="catalog.html" title="Products">Catalog of Products</a> &nbsp;
+				<a href="employment.html" title="Employment">Employment</a> &nbsp;
+				<a href="order.html" title="Order">Order</a> &nbsp;
+			</h4>
+		</nav>
+		<hr>
+		<footer>
+		&copy; 02/25/2017 Amruta Kulkarni
+		</footer>
+	</article>
+</body>
+</html> 

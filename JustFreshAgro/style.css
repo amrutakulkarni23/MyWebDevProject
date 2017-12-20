@@ -1,0 +1,416 @@
+h1 {background-color: #FFFACD; color:#800000}
+h3 {text-align:center; font-family:Verdana; font-style: normal; background-color:#C0C0C0; font-size: 1.1em;}
+h4 {text-align:center; font-family:Verdana; font-style: normal; background-color:#C0C0C0}
+p {font-size: 12pt; font-style: normal; font-family: 'Verdana'}
+body {background-color:#d8f3ea; 
+		color:black; 
+		font-family: 'Comic San MS'; 
+		font-size: 16pt; 
+		font-style: oblique; 
+		font-weight:bolder; 
+		text-align:justify;
+		counter-reset: section;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: flex;
+		justify-content: center;
+		}
+a:link {font-size: 14pt; font-weight:bolder; color:#2F4F4F; text-decoration:underline; font-style: normal}
+a:visited {font-size: 14pt; font-weight:bolder; color:blue; text-decoration:none; font-style: normal}
+a:hover {font-size: 14pt; font-weight:bolder; color:#F0E68C; text-decoration:none; font-style: normal}
+.Farmcls {	font-family: 'Forte','Verdana','Comic San MS'; 
+			text-align:center;	
+			text-shadow: 5px 5px 5px yellow;
+			background: -webkit-radial-gradient(center, circle, #DDFFFF 0%, #ff6699 200%);	
+			border-style: solid;	
+			margin: 10px 10px 10px 10px; 
+			width: 500px;
+			position:relative;
+			left:30%;
+			border-radius:50%;
+}
+
+#indexPage{background:url(images/farm1.jpg) no-repeat;}
+#indextext{color:#FFFFE0;}
+#indxspan {text-decoration:underline; color:white; font-size: 18pt;font-weight:bolder;font-style:italic}
+#AboutUsPage{background:url(images/about1.jpg) no-repeat;}
+#aboutPage{font-size:12pt; color:black; border-style:solid;background:#FFC0CB; opacity: 0.85;}
+#Align{text-align:right}
+#OverlineId {text-decoration:overline}
+#textDecorIndx {text-decoration:underline; color:green; font-size: 16pt;font-weight:bolder;font-style:italic}
+footer{text-align:center; font-size:12pt;
+border-style:solid; width:230px;height:15px;
+border-radius:10px; padding:10px;margin:auto;
+font-style:normal;font-family:'Calibri';background-color:#FFF8DC;}
+#logoimage{
+	border-color: red; 
+	border-style: solid;
+	position:absolute; left:0%; top:1%;
+	height:25%;
+	width:15%;
+}
+.BackImg1{
+	background: url(images/logoimage4.jpg);
+	padding:80px;
+	margin-top:0px;
+	margin-left:200px;
+	margin-right:0px;
+	margin-bottom:0px;
+	position:relative;
+	}
+	
+.faqbox{
+		margin: 20px 30px 20px 15px; 
+		/*border-color: red blue green teal; */
+		border-color: #FF8C00;
+		border-style: solid;
+		padding: 15px 25px; 
+		background-color: #90EE90;
+		border-width: 5px;
+		border-radius:20%;
+		/* box-shadow: 10px 10px 5px 5px #FFA500; */
+		box-shadow: rgb(250,120,120) 10px 10px 10px;
+		font-family: 'calibri';
+		font-size:16pt;
+		font-style:normal;
+		font-weight:bolder;
+		}	
+
+div{margin: 5px 5px 5px 500px;}		
+
+
+.prodimg{background:url(images/farmprod1.jpg) no-repeat}
+
+.newspan1 {color:firebrick; font-size:14pt; font-style:oblique}
+.newspan2 {color:orange; font-size:14pt;font-style:oblique}
+.newspan3 {color:red; font-size:14pt;font-style:oblique}
+.newspan4 {color:darkolivegreen; font-size:14pt;font-style:oblique}
+
+#newid1{background-color:white;}
+#newid2{background:url(images/whatsnew2.jpg) no-repeat;}
+.newflex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 1000px;
+    height: 650px;
+	margin:auto;
+	padding:10px;
+	border-radius:30px;
+	-moz-flex-direction: row;
+	-webkit-flex-direction: row;
+}
+
+.newflex-wrapper{
+    display: -webkit-flex;
+    display: flex;
+	margin:auto;
+	padding:10px;
+	-moz-flex-direction: column;
+	-webkit-flex-direction: column;
+}
+
+.newflex-item1 {
+    background-color: #bfff80;
+    border-style:solid;
+    width: 500px;
+    height: 200px;
+    margin: 10px;
+	padding:10px;
+	border-radius:30px;
+	font-size:20pt;
+}
+
+.newflex-item2 {
+    background-color: #bfff80;
+    border-style:solid;
+    width: 800px;
+    height: 600px;
+    margin: 10px;
+	padding:10px;
+	border-radius:30px;
+	font-family: 'Calibri';
+	font-style:normal;
+}
+
+.newflex-item3 {
+    border-style:solid;
+    width: 500px;
+    height: 130px;
+    margin: 10px;
+	padding:10px;
+	border-radius:30px;
+}
+
+.faqClass {font-family:'calibri'; font-size:14pt;}
+
+.bgcolorhead{background: #90EE90}
+
+.supportbg{background: url(images/logoimage.jpg) no-repeat;	text-align:center;}
+
+#custService{position:relative; left:30%} 
+#whatsNew{position:relative; left:30%} 
+#prodInfo{position:relative; left:30%}
+
+@media screen and ( max-width: 800px ) {
+.small-menu { display: inline; margin: auto; padding: 30%;}
+.large-menu { display: none; }
+}
+@media screen and ( min-width: 801px ) and ( max-width: 1024px ) {
+.small-menu { display: none; }
+.large-menu {
+display:inline;
+float:left;
+width:100%;
+}
+}
+@media screen and ( min-width: 1025px ) {
+.small-menu { display: none; }
+.large-menu {
+display: block;
+}
+}
+
+figcaption{font-family:'Calibri';font-size:12pt;font-style:normal;padding:5px;color:red;}		
+
+.prodInformation {width: 80%; height: 400px;margin:75px;text-align: center;background-color:#FFE4C4;border-width: 5px;}
+.productInfo{font-family:'Calibri'; font-size:16pt;text-align: left;color:red; margin:0px;}
+.productInfobg{background: url(images/productInfo.jpg) no-repeat;text-align:center;opacity: 0.85}
+
+.imageClass{
+    box-sizing: border-box;
+	width:800px;
+	Height:300px;
+    border: 5px inset red;
+    background: white;
+	margin: 5px 10px 10px 10px;
+	box-shadow: 10px 10px 20px 10px yellow inset;
+	padding: 50px 50px 50px 50px;
+	position:relative; 
+	left:2%;
+	border-radius: 20px;
+	text-shadow: 1px 1px 2px yellow;
+	text-align:center;
+}
+
+.descriptionClass{
+	box-sizing: border-box;
+	text-align:justify;
+	padding:20px;
+	width:800px;
+	Height:150px;
+    border: 5px inset yellow;
+    background: lightyellow;
+	margin: 20px 10px 10px 10px;
+	box-shadow: 10px 10px 20px 10px yellow;
+	position:relative; 
+	left:2%;
+	border-radius: 20px;
+	text-align:justify;
+	font-family:'Calibri';
+	color:hsl(360,90%,30%);
+	background: -webkit-radial-gradient(center, circle,#DDFFFF 0%, #ff6699 200%);
+	}
+	
+.container {
+	box-sizing: border-box;
+	width:900px;
+	Height:60%;
+    margin: auto;
+	padding: 10px;
+    border: 5px solid blue;
+	position:relative;
+	border-radius: 30px;
+	text-align:center;
+}	
+
+.thCatalog{background-color:black; color:white; font-size:18pt;padding:10px;}
+.tableCatalog{text-align:center; font-family:'Calibri';margin:auto;}
+.tdCatalog{font-style:normal;font-weight:normal;font-size:12pt;padding:10px;}
+
+tr:nth-child(even) {
+    background-color: #ADD8E6;
+}
+
+tr:nth-child(odd) {
+    background-color: #FFFACD;
+}
+
+.catalogbg{background: url(images/catalog.jpg) no-repeat;text-align:center;opacity: 0.85}
+
+#catalog{position:relative; left:30%}
+
+.job-container{
+	display: -webkit-flex;
+    display: flex;
+	-moz-flex-direction: row;
+	-webkit-flex-direction: row;
+	width:1000px;
+	height:auto;
+	margin:auto;
+	padding:5px;
+}	
+
+.job-image1 {
+    border-style:solid;
+    width: 210px;
+    height: 200px;
+    margin: 30px;
+	padding:10px;
+	border-radius:30px;
+}	
+
+.jobs{
+	font-family:'Calibri'; 
+	font-style:normal;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  margin:10px;
+  border-radius:30px;
+}  
+  
+.job1{width:500px;
+		height:300px;
+		padding:5px;
+		border-color: #FF8C00;
+		border-style: solid;
+		margin:auto;
+		text-align:justify;
+		background:#ffff80;
+		border-radius:30px;}
+		
+section h2:first-letter{
+font-size: 1.5em;
+   color: blue;
+}
+   
+h2{
+    counter-reset: subsection;
+}
+
+h2:before {
+    counter-increment: section;
+    content: "Position " counter(section) ". ";
+}
+
+h5:before {
+    counter-increment: subsection;
+    content: counter(section) "." counter(subsection) " ";
+	font-style:italic;
+}		
+
+.employmentbg{background: url(images/employment.jpg) no-repeat;opacity: 0.90}
+
+#employment{position:relative; left:30%}
+.myJobs{color:maroon; text-decoration:none; font-style:italic; font-size:16pt;}
+
+.position1{font-family:'Calibri';background-color:#99ffbb; font-style:normal;justify-content:space-between;font-size:14pt;font-weight:normal;}
+.jobPosition{font-weight:bolder;}
+#jobInfo{font-size:16pt;text-align:center;}
+
+.jobTitle{font-family:'Calibri';font-size:16pt;color:maroon;margin:0px;display:inline;background-color:yellow;text-decoration:underline}
+
+#newId{background: url(images/newbg.jpg) repeat-y;}
+
+#newProdId{font-size:14pt; font-weight:bolder;color:red;width:250px;height:auto;text-align:center;background-color:yellow;
+		position:absolute; top:200px;left:150px; margin:0px; padding:15px;
+	}
+
+.todayOfferClass{color:#006400;font-style:italic;font-size:10pt;}
+
+
+#indexClock{
+	border-color: red; 
+	border-style: solid;
+	background-color:yellow;
+	text-align:center;
+	margin:20px;
+}
+
+#indexGreet{
+	border-color: red; 
+	border-style: solid;
+	text-align:center;
+	padding:5px;
+	margin:20px;
+}
+
+#indexCal {
+	margin:20px;
+}
+
+.index-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 1250px;
+    height: auto;
+	margin:auto;
+	padding:10px;
+	border-radius:30px;
+	-moz-flex-direction: row;
+	-webkit-flex-direction: row;
+}
+
+.index-text{
+	margin:auto;
+	padding:10px;
+}
+
+#indexquote {
+    background-color:#FFE4C4;
+    border-style:solid;
+    width: 800px;
+    height: 200px;
+    margin: 50px 10px 50px 10px;
+	padding:55px 5px 60px 5px;
+	border-radius:50px 0px 50px 0px;
+	font-family: 'Comic Sans MS';
+	font-style:normal;
+	color:maroon;
+	text-align:center;
+}
+
+#indexInfo {
+    background-color:#FFE4C4;
+    border-style:solid;
+	width:600px;
+    height: 380px;
+    margin: 50px 10px 50px 10px;
+	padding:10px;
+	border-radius:30px;
+	font-family: 'Calibri';
+	font-style:normal;
+	color:maroon;
+}
+
+.commentLabel{vertical-align:40px;}
+
+.tableOrder{margin:auto;font-family:'calibri';font-style:normal;}
+
+#tablebg{
+	background-color:black;
+	color:white;
+	border-color:#40E0D0;
+}
+
+label {
+	display: inline-block;
+    width: 40%;
+    text-align: right;
+	color: #800000;
+	font-family:cursive;
+	font-style:normal;
+	font-size:14pt;
+	margin-left:50px;
+}
+
+.orderTable {text-align:right}
+.orderButton{margin:10px;width:100px;height:30px;font-size:14pt;}
+.orderTableHeading{text-align:center;}
+
+#orderbg{background:url(images/orderbg.jpg) no-repeat;}
+.orderForm{margin:auto;}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just-Fresh-Agro</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body class = "productInfobg">
+	<article>
+		<header>
+			<!-- Heading for Just-Fresh-Agro -->
+			<h1 class = "Farmcls" id = "prodInfo"> Just-Fresh-Agro </h1>
+			<!-- Horizontal line under Just-Fresh-Agro -->			
+			<hr width=20% size=10 noshade color=#800000>
+			<nav>
+				<h3 class="large-menu">
+					<a href="index.html" title="Home" id = OverlineId>Home</a> &nbsp;
+					<a href="about.html" title="About Us" id = OverlineId>About Us</a> &nbsp;
+					<a href="new.html" title="What's New" id = OverlineId>What's New</a> &nbsp;
+					<a href="customerService.html" title="Support" id = OverlineId>Customer Service</a> &nbsp;
+					<a href="faq.html" title="FAQ" id = OverlineId>FAQ</a> &nbsp;
+					<a href="productInformation.html" title="Product Information" id = OverlineId>Product Information</a> &nbsp;
+					<a href="catalog.html" title="Products" id = OverlineId>Catalog of Products</a> &nbsp;
+					<a href="employment.html" title="Employment" id = OverlineId>Employment</a> &nbsp;
+					<a href="order.html" title="Order" id = OverlineId>Order</a> &nbsp;
+				</h3>
+			</nav>
+		</header>
+		<!-- Text for Product Information Page -->
+		<section>
+			<script type="text/javascript">
+			
+				// define a constructor function and its properties
+				function ProductInformation(productImage, productDescription) {
+					this.image = productImage;
+					this.description = productDescription;
+					this.display = displayProduct;
+					}
+				
+				// define function to display properties
+				function displayProduct() {
+					document.write("<article class = 'container'><section class = 'imageClass'>", this.image, "</section>");
+					document.write("<section class = 'descriptionClass'>", this.description, "</section></article>");					
+					}	
+				
+				// define functions for each product
+				function productInfo1(){
+					var image1 = "<img src='images/watermelon.jpg'>";
+					var description1 = "Watermelon is a nutrient dense food that provides a high amount of vitamins, minerals and antioxidants for a low amount of calories. It lowers the risk for developing asthama. It also helps to control blood pressure.";
+					var product1 = new ProductInformation(image1, description1);
+					product1.display();
+				}
+				
+				function productInfo2(){
+					var image2 = "<img src='images/banana.jpg'>";
+					var description2 = "Banana benefits our body in many ways. Banana helps to loose weight, provide nutrients that regulate heart rhythm and have vitamins for good eye health. It also improves digestion and moderates blood sugar level.";
+					var product2 = new ProductInformation(image2, description2);
+					product2.display();
+				}
+				
+				function productInfo3(){
+					var image3 = "<img src='images/brocoli.jpg'>";
+					var description3 = "Brocoli is a very good source of dietary fiber. It is also a good source of vitamin B1, protein, calcium, iron etc. Broccoli helps to improve Detoxification. As brocoli has a unique combination of antioxidant, anti-inflammatory and pro-detoxification components it helps in cancer prevention.";
+					var product2 = new ProductInformation(image3, description3);
+					product2.display();
+				}
+				
+				function productInfo4(){
+					var image4 = "<img src='images/spinach.jpg'>";
+					var description4 = "Spinach is a great vegetable loaded with lots of nutrients. Spinach are important for skin, hair and bone health. It provides protein, iron, vitamins and minerals. It helps to lower glucose levels and increase insulin sensitivity. Spinach is high in fiber and water content, which help to prevent constipation and improves digestion.";
+					var product2 = new ProductInformation(image4, description4);
+					product2.display();
+				}
+				
+				// define function to get user input and display respective product
+				function selectProduct(){
+					fisrtName = prompt("What is your first name?","Amruta");
+					lastName = prompt("What is your last name?","Kulkarni");
+					alert("Welcome " + fisrtName + " " + lastName + "! \nProduct information will be displayed once you select the product.");
+					chosenProduct = prompt("Hi " + fisrtName +"! \nPlease select your product and enter its number(between 1 and 4):\n1. Watermelon \n2. Banana \n3. Brocoli \n4. spinach");
+					
+					if (chosenProduct == 1) 
+					{
+						productInfo1();
+					} 
+					else if (chosenProduct == 2) 
+					{
+						productInfo2();
+					} 
+					else if (chosenProduct == 3) 
+					{
+						productInfo3();
+					} 
+					else if (chosenProduct == 4) 
+					{
+						productInfo4();
+					} 
+					else 
+					{
+						document.write("<div class='productInfo'>Selected Product Number is Incorrect.<br>Please Enter Product Number between 1 and 4.</div>");
+					}
+				}
+				
+				// Call selectProduct
+				selectProduct();
+				
+			</script>
+		</section>
+		<!-- Menu options at Bottom of Page -->
+		<nav>
+			<h4 id = Align>
+				<a href="index.html" title="Home">Home</a> &nbsp;
+				<a href="about.html" title="About Us">About Us</a> &nbsp;
+				<a href="new.html" title="What's New">What's New</a> &nbsp;
+				<a href="customerService.html" title="Support">Customer Service</a> &nbsp;
+				<a href="faq.html" title="FAQ">FAQ</a> &nbsp;
+				<a href="productInformation.html" title="Product Information">Product Information</a> &nbsp;
+				<a href="catalog.html" title="Products">Catalog of Products</a> &nbsp;
+				<a href="employment.html" title="Employment">Employment</a> &nbsp;
+				<a href="order.html" title="Order">Order</a> &nbsp;
+			</h4>
+		</nav>
+		<hr>
+		<footer>
+			&copy; 02/25/2017 Amruta Kulkarni
+		</footer>
+	</article>
+</body>
+</html> 

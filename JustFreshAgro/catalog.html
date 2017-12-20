@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just-Fresh-Agro</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+<script type="text/javascript">
+		
+			// define a constructor function and its properties
+			function Products(productName, productType, productCalories, productFat, productPrice) {
+				this.name = productName;
+				this.productType = productType;
+				this.calories = productCalories;
+				this.fat = productFat;
+				this.price = productPrice;
+				this.display = displayProduct;
+				}
+				
+			// define function to display properties
+			function displayProduct() {
+				document.write("<td class='tdCatalog'>" + this.name  + "</td>");
+				document.write("<td class='tdCatalog'>" + this.productType  + "</td>");
+				document.write("<td class='tdCatalog'>" + this.calories  + "</td>");
+				document.write("<td class='tdCatalog'>" + this.fat  + "</td>");
+				document.write("<td class='tdCatalog'>" + this.price + "</td>");
+			}
+					
+			// define product inventory and products array
+			var productCatalog = new Array();
+			var fruits = new Array();
+			var leafVegs = new Array();
+			var vegetables = new Array();
+			var milkProducts = new Array();
+			
+</script>
+		
+</head>
+<body class='catalogbg'>
+	<article>
+		<header>
+			<!-- Heading for Just-Fresh-Agro -->
+			<h1 class = "Farmcls" id="catalog"> Just-Fresh-Agro </h1>
+			<!-- Horizontal line under Just-Fresh-Agro -->			
+			<hr width=20% size=10 noshade color=#800000>
+			<nav>
+				<h3 class="large-menu">
+					<a href="index.html" title="Home" id = OverlineId>Home</a> &nbsp;
+					<a href="about.html" title="About Us" id = OverlineId>About Us</a> &nbsp;
+					<a href="new.html" title="What's New" id = OverlineId>What's New</a> &nbsp;
+					<a href="customerService.html" title="Support" id = OverlineId>Customer Service</a> &nbsp;
+					<a href="faq.html" title="FAQ" id = OverlineId>FAQ</a> &nbsp;
+					<a href="productInformation.html" title="Product Information" id = OverlineId>Product Information</a> &nbsp;
+					<a href="catalog.html" title="Products" id = OverlineId>Catalog of Products</a> &nbsp;
+					<a href="employment.html" title="Employment" id = OverlineId>Employment</a> &nbsp;
+					<a href="order.html" title="Order" id = OverlineId>Order</a> &nbsp;
+				</h3>
+			</nav>
+		</header>
+		<!-- Text for Home Page -->
+		<section>
+			<script>
+				// populate product inventory with product categories
+				var catalogCount = productCatalog.push(fruits);
+				catalogCount = productCatalog.push(leafVegs);
+				catalogCount = productCatalog.push(vegetables);
+				catalogCount = productCatalog.push(milkProducts);
+				
+				// create instances of products object
+				var fruit1 = new Products("Watermelon","Organic Seedless","85","0.4g","$2.49");
+				var fruit2 = new Products("Banana","Organic","105","0.4g","$2.99");
+				var fruit3 = new Products("Apple","Organic","95","0.3g","$1");
+				var fruit4 = new Products("Orange","Organic Seedless","0.1g","46","$1");
+				
+				var leafVeg1 = new Products("Spinach","Organic","7","0.1g","$1.99");
+				var leafVeg2 = new Products("Lettuce","Organic","5","0.1g","$1.49");
+				var leafVeg3 = new Products("Watercress","Organic","4","0.0g","$1");
+				
+				var veg1 = new Products("Potato","Organic","163","0.2g","$1.19");
+				var veg2 = new Products("Cabbage","Organic","6","0.0g","$1");
+				var veg3 = new Products("Cauliflower","Organic","146","1.6g","$1.99");	
+				
+				var milkProduct1 = new Products("Milk","Organic","103","2.4g","$5.99");
+				var milkProduct2 = new Products("Yogurt","Organic","100","0.7g","$2.99");
+				var milkProduct3 = new Products("Sweet Lassi","Organic","230","5g","$2.99");
+				var milkProduct4 = new Products("Buttermilk","Organic","99","2.2","$2.49");
+				
+				// populate fruits array with 4 fruits
+				var fruitsCount = fruits.push(fruit1);
+				fruitsCount = fruits.push(fruit2);
+				fruitsCount = fruits.push(fruit3);
+				fruitsCount = fruits.push(fruit4);
+			
+				// populate leaf vagetables array with 4 leaf vegetables
+				var leafVegCount =leafVegs.push(leafVeg1);
+				leafVegCount = leafVegs.push(leafVeg2);
+				leafVegCount = leafVegs.push(leafVeg3);
+				
+				// populate vegetables array with 4 vegetables	
+				var vegsCount = vegetables.push(veg1);
+				vegsCount = vegetables.push(veg2);
+				vegsCount = vegetables.push(veg3);
+
+				// populate milk products array with 4 milk products
+				var milkProdCount = milkProducts.push(milkProduct1);
+				milkProdCount = milkProducts.push(milkProduct2);
+				milkProdCount = milkProducts.push(milkProduct3);
+				milkProdCount = milkProducts.push(milkProduct4);
+		
+				// define array to display product properties as table heading
+				var catalogRow = new Array("Name", "Product Type", "Calories", "Total Fat", "Price");
+				var catalogRowCount = catalogRow.length;
+				
+				var catalogColumn = new Array("Fruits", "Leaf Vegetables", "Vegetables", "Milk Products");
+				
+				// display table heading 
+				document.write("<table border=2 class='tableCatalog'><tr><th class='thCatalog'>&nbsp;&nbsp;&nbsp;</th>");
+				for (i=0; i<catalogRowCount; i++) 
+				{
+					document.write("<th class='thCatalog'>" + catalogRow[i] + "</th>");
+				}
+				document.write("</tr>");
+				
+				// display products
+				for (i=0; i<catalogCount; i++) 
+				{
+					
+					if (catalogColumn[i] == "Fruits")
+						loopCounter = fruitsCount;
+					else if (catalogColumn[i] == "Leaf Vegetables")
+						loopCounter = leafVegCount;
+					else if (catalogColumn[i] == "Vegetables")
+						loopCounter = vegsCount;
+					else if (catalogColumn[i] == "Milk Products")
+						loopCounter = milkProdCount;
+					
+					document.write("<tr><th class='thCatalog' rowspan="+loopCounter+">" + catalogColumn[i] + "</th>");
+					
+					for(var j = 0; j < loopCounter; j++)
+					{
+						trFlag = false;
+						if(j>0){
+						document.write("<tr>");
+						trFlag = true;
+						}
+								
+						productCatalog[i][j].display();
+						
+						if(trFlag)
+						document.write("</tr>");
+					}
+					document.write("</tr>");
+				}
+				document.write("</table>");
+			</script>
+			
+		</section>
+		<!-- Menu options at Bottom of Page -->
+		<nav>
+			<h4 id = Align>
+				<a href="index.html" title="Home">Home</a> &nbsp;
+				<a href="about.html" title="About Us">About Us</a> &nbsp;
+				<a href="new.html" title="What's New">What's New</a> &nbsp;
+				<a href="customerService.html" title="Support">Customer Service</a> &nbsp;
+				<a href="faq.html" title="FAQ">FAQ</a> &nbsp;
+				<a href="productInformation.html" title="Product Information">Product Information</a> &nbsp;
+				<a href="catalog.html" title="Products">Catalog of Products</a> &nbsp;
+				<a href="employment.html" title="Employment">Employment</a> &nbsp;
+				<a href="order.html" title="Order">Order</a> &nbsp;
+			</h4>
+		</nav>
+		<hr>
+		<footer>
+			&copy; 02/25/2017 Amruta Kulkarni
+		</footer>
+	</article>
+</body>
+</html> 
